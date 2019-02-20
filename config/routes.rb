@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   resources :mailers, only: [:create]
 
   get "/sent", to: "mailers#sent"
+  
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 end
